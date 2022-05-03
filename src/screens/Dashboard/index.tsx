@@ -1,7 +1,10 @@
 import React from "react";
 
 import { HighlightCard } from "../../components/HighlightCard";
-import { TrasactionCard } from "../../components/TransationCard";
+import {
+  TrasactionCard,
+  TransactionCardProps,
+} from "../../components/TransationCard";
 
 import {
   Container,
@@ -19,30 +22,34 @@ import {
   TransactionList,
 } from "./styles";
 
+export interface DataListProps extends TransactionCardProps {
+  id: string;
+}
+
 export function Dashboard() {
-  const data = [
+  const data: DataListProps[] = [
     {
+      id: "1",
+      type: "positive",
       title: "Desenvolvimento de site",
       amount: "R$ 12.000,00",
       category: { name: "Vendas", icon: "dollar-sign" },
       date: "12/04/2020",
     },
     {
-      title: "Desenvolvimento de site",
+      id: "2",
+      type: "negative",
+      title: "Hamburgueria Pizzy",
       amount: "R$ 12.000,00",
-      category: { name: "Vendas", icon: "dollar-sign" },
+      category: { name: "Alimentação", icon: "coffee" },
       date: "12/04/2020",
     },
     {
-      title: "Desenvolvimento de site",
+      id: "3",
+      type: "negative",
+      title: "Aluguel do apartamento",
       amount: "R$ 12.000,00",
-      category: { name: "Vendas", icon: "dollar-sign" },
-      date: "12/04/2020",
-    },
-    {
-      title: "Desenvolvimento de site",
-      amount: "R$ 12.000,00",
-      category: { name: "Vendas", icon: "dollar-sign" },
+      category: { name: "Casa", icon: "shopping-bag" },
       date: "12/04/2020",
     },
   ];
@@ -91,11 +98,8 @@ export function Dashboard() {
         <Title>Listagem</Title>
         <TransactionList
           data={data}
+          keyExtractor={(item) => item.id}
           renderItem={({ item }) => <TrasactionCard data={item} />}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{
-            paddingBottom: 20,
-          }}
         ></TransactionList>
       </Transactions>
     </Container>
