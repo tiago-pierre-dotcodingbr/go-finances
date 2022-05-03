@@ -1,5 +1,7 @@
-import React from 'react'
-import { HighlightCard } from '../../components/HighlightCard'
+import React from "react";
+
+import { HighlightCard } from "../../components/HighlightCard";
+import { TrasactionCard } from "../../components/TransationCard";
 
 import {
   Container,
@@ -11,10 +13,40 @@ import {
   UserGreeting,
   UserName,
   Icon,
-  HighlightCards
-} from './styles'
+  HighlightCards,
+  Transactions,
+  Title,
+  TransactionList,
+} from "./styles";
 
 export function Dashboard() {
+  const data = [
+    {
+      title: "Desenvolvimento de site",
+      amount: "R$ 12.000,00",
+      category: { name: "Vendas", icon: "dollar-sign" },
+      date: "12/04/2020",
+    },
+    {
+      title: "Desenvolvimento de site",
+      amount: "R$ 12.000,00",
+      category: { name: "Vendas", icon: "dollar-sign" },
+      date: "12/04/2020",
+    },
+    {
+      title: "Desenvolvimento de site",
+      amount: "R$ 12.000,00",
+      category: { name: "Vendas", icon: "dollar-sign" },
+      date: "12/04/2020",
+    },
+    {
+      title: "Desenvolvimento de site",
+      amount: "R$ 12.000,00",
+      category: { name: "Vendas", icon: "dollar-sign" },
+      date: "12/04/2020",
+    },
+  ];
+
   return (
     <Container>
       <Header>
@@ -22,7 +54,7 @@ export function Dashboard() {
           <UserInfo>
             <Photo
               source={{
-                uri: 'https://avatars.githubusercontent.com/u/43191667?v=4'
+                uri: "https://avatars.githubusercontent.com/u/43191667?v=4",
               }}
             />
             <User>
@@ -54,6 +86,18 @@ export function Dashboard() {
           lastTransaction="01 à 16 de abril"
         />
       </HighlightCards>
+
+      <Transactions>
+        <Title>Listagem</Title>
+        <TransactionList
+          data={data}
+          renderItem={({ item }) => <TrasactionCard data={item} />}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingBottom: 20,
+          }}
+        ></TransactionList>
+      </Transactions>
     </Container>
-  )
+  );
 }
