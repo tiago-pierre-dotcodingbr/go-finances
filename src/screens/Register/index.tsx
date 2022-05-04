@@ -1,21 +1,22 @@
-import React, { useState } from "react";
-import { Button } from "../../components/Forms/Button";
-import { Input } from "../../components/Forms/Input";
-import { TransactionTypeButton } from "../../components/Forms/TransactionTypeButton";
+import React, { useState } from 'react'
+import { Button } from '../../components/Forms/Button'
+import { CategorySelect } from '../../components/Forms/CategorySelect'
+import { Input } from '../../components/Forms/Input'
+import { TransactionTypeButton } from '../../components/Forms/TransactionTypeButton'
 import {
   Container,
   Header,
   Title,
   Form,
   Fields,
-  TransactionsTypes,
-} from "./styles";
+  TransactionsTypes
+} from './styles'
 
 export function Register() {
-  const [transactionType, SetTransactionType] = useState("");
+  const [transactionType, SetTransactionType] = useState('')
 
-  function handleTransactionTypeSelect(type: "up" | "down") {
-    SetTransactionType(type);
+  function handleTransactionTypeSelect(type: 'up' | 'down') {
+    SetTransactionType(type)
   }
 
   return (
@@ -31,20 +32,21 @@ export function Register() {
             <TransactionTypeButton
               type="up"
               title="Income"
-              onPress={() => handleTransactionTypeSelect("up")}
-              isActive={transactionType === "up"}
+              onPress={() => handleTransactionTypeSelect('up')}
+              isActive={transactionType === 'up'}
             />
             <TransactionTypeButton
               type="down"
               title="Outcome"
-              onPress={() => handleTransactionTypeSelect("down")}
-              isActive={transactionType === "down"}
+              onPress={() => handleTransactionTypeSelect('down')}
+              isActive={transactionType === 'down'}
             />
           </TransactionsTypes>
+          <CategorySelect title="Categoria" />
         </Fields>
 
         <Button title="Enviar" />
       </Form>
     </Container>
-  );
+  )
 }
